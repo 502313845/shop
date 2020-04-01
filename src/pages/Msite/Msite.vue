@@ -2,7 +2,7 @@
     
       <section class="msite">
         
-        <HeaderTop title="昌平区">
+        <HeaderTop :title="address.name">
              <span class="header_search" slot="left">
             <i class="iconfont icon-sousuo"></i>
            </span>
@@ -134,6 +134,7 @@
 
 
 <script>
+import {mapState} from 'vuex'
 import HeaderTop from '../../components/HeaderTop/HeaderTop'
 import Shoplist from '../../components/Shoplist/ShopList'
 import Swiper from 'swiper'
@@ -150,6 +151,9 @@ export default {
         })
     },  
     components:{HeaderTop,Shoplist},
+    computed: {
+      ...mapState(['address'])
+    },
     
 }
 </script>
