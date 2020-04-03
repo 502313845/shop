@@ -1,7 +1,7 @@
 <template>
    <div class="shop_container">
             <ul class="shop_list">
-              <li class="shop_li border-1px">
+              <li class="shop_li border-1px" @click="$router.push('/shop')">
                 <a>
                   <div class="shop_left">
                     <img class="shop_img" src="./images/shop/1.jpg">
@@ -39,7 +39,7 @@
                   </div>
                 </a>
               </li>
-              <li class="shop_li border-1px">
+              <li class="shop_li border-1px" @click="$router.push('/shop')">
                 <a>
                   <div class="shop_left">
                     <img class="shop_img" src="./images/shop/2.jpg">
@@ -77,7 +77,7 @@
                   </div>
                 </a>
               </li>
-              <li class="shop_li border-1px">
+              <li class="shop_li border-1px" @click="$router.push('/shop')">
                 <a>
                   <div class="shop_left">
                     <img class="shop_img" src="./images/shop/3.jpg">
@@ -115,7 +115,7 @@
                   </div>
                 </a>
               </li>
-              <li class="shop_li border-1px">
+              <li class="shop_li border-1px" @click="$router.push('/shop')">
                 <a>
                   <div class="shop_left">
                     <img class="shop_img" src="./images/shop/4.jpg">

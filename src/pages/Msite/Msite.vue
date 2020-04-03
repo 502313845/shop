@@ -6,9 +6,13 @@
              <span class="header_search" slot="left">
             <i class="iconfont icon-sousuo"></i>
            </span>
-            <span class="header_login" slot="right">
-            <span class="header_login_text">Login|Register</span>
-          </span>
+            <router-link class="header_login" slot="right" :to="userInfo.name?'/userinfo':'/login'">
+            <span class="header_login_text" v-if="!userInfo.name">
+              Login</span>
+            <span class="header_login_text" v-else>
+              <i class="iconfont icon-person"></i>
+            </span>
+          </router-link>
           </HeaderTop>
         <!--nav-->
         <nav class="msite_nav">
@@ -152,7 +156,7 @@ export default {
     },  
     components:{HeaderTop,Shoplist},
     computed: {
-      ...mapState(['address'])
+      ...mapState(['address','userInfo'])
     },
     
 }

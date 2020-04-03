@@ -11,25 +11,25 @@
             <div :class="{on:loginWay}">
               <section>
                 <section class="login_message">
-                  <input type="text" maxlength="11" placeholder="手机/邮箱/用户名" v-model="name">
+                  <input type="text" maxlength="11" placeholder="Phone/E-mail/Username" v-model="name">
                 </section>
                 <section class="login_verification">
-                  <input type="password" maxlength="8" placeholder="密码" v-if="!showPwd" v-model="pwd">
-                  <input type="text" maxlength="8" placeholder="密码" v-else v-model="pwd">
+                  <input type="password" maxlength="8" placeholder="Enter your Password" v-if="!showPwd" v-model="pwd">
+                  <input type="text" maxlength="8" placeholder="Enter your Password" v-else v-model="pwd">
                   <div class="switch_button" :class="showPwd?'on':'off'" @click="showPwd=!showPwd">
                     <div class="switch_circle" :class="{right:showPwd}"></div>
                     <span class="switch_text">{{showPwd?'abc':'...'}}</span>
                   </div>
                 </section>
                 <section class="login_message">
-                  <input type="text" maxlength="11" placeholder="验证码" v-model="captcha">
+                  <input type="text" maxlength="11" placeholder="Verify" v-model="captcha">
                   <img class="get_verification" src="http://localhost:4000/captcha" alt="captcha" @click="getCaptcha" ref="captcha">
                 </section>
               </section>
             </div>
-            <button class="login_submit">登录</button>
+            <button class="login_submit">Login</button>
           </form>
-          <a href="javascript:;" class="about_us">关于我们</a>
+          <a href="javascript:;" class="about_us">About Us</a>
         </div>
         <a href="javascript:" class="go_back" @click="$router.back()">
           <i class="iconfont icon-jiantou2"></i>
@@ -87,7 +87,7 @@ export default {
                    const result= await reqPwdLogin({name,pwd,captcha})
                    if (result.code===0){
                         const user=result.data
-                        
+                        this.$store.dispatch('recordUser',user)
                         this.$router.replace('/profile')
 
                    }else{
@@ -164,13 +164,14 @@ export default {
                 height 48px
                 font-size 14px
                 background #fff
+                 
                 .get_verification
                   position absolute
                   top 50%
                   right 10px
                   transform translateY(-50%)
                   border 0
-                  color #ccc
+                  color #F5F5F5
                   font-size 14px
                   background transparent
                   &.right_phone
@@ -218,7 +219,7 @@ export default {
                      transform translateX(30px)
               .login_hint
                 margin-top 12px
-                color #999
+                color #F5F5F5
                 font-size 14px
                 line-height 20px
                 >a

@@ -1,5 +1,6 @@
 // https://eslint.org/docs/user-guide/configuring
 
+
 module.exports = {
   root: true,
   parserOptions: {
@@ -7,6 +8,7 @@ module.exports = {
   },
   env: {
     browser: true,
+    "node": true
   },
   extends: [
     // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
@@ -25,5 +27,6 @@ module.exports = {
     'generator-star-spacing': 'off',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
-  }
+  },
+  
 }

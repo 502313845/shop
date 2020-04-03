@@ -2,12 +2,14 @@
     <section class="profile">
         <HeaderTop title="My Profile"/>
         <section class="profile-number">
-          <router-link to="/login" class="profile-link">
+          <router-link :to="userInfo.name?'/userinfo':'/login'" class="profile-link">
             <div class="profile_image">
               <i class="iconfont icon-person"></i>
             </div>
             <div class="user-info">
-              <p class="user-info-top">Login/Register</p>
+              <p class="user-info-top" v-if="!userInfo.name">{{'login/register'}}</p>
+             <p class="user-info-top" v-else>{{'Welcome!'+'  '+userInfo.name}}</p>
+                
               <p>
                 <span class="user-icon">
                   <i class="iconfont icon-shouji icon-mobile"></i>
@@ -88,15 +90,34 @@
             </div>
           </a>
         </section>
+        <section class="profile_my_order border-1px">
+            <mt-button type="danger" style="width:100%" v-if="userInfo.name" @click="logout">Logout</mt-button>
       </section>
-    
+    </section>
 </template>
 
 
 <script>
+import { MessageBox,Toast} from 'mint-ui';
+import {mapState}from 'vuex'
 import HeaderTop from '../../components/HeaderTop/HeaderTop'
 export default {
-    components:{HeaderTop}
+    components:{HeaderTop},
+    computed: {
+      ...mapState(['userInfo'])
+    },
+    methods: {
+      logout(){
+              MessageBox.confirm('',{title:'Logout',message:'Are you Sure?',confirmButtonText:'confirm',cancelButtonText:'cancel'}).then(action => {
+            this.$store.dispatch('logout');
+            Toast("Logout Successfully!")
+          });
+      
+        
+        
+        
+      }
+    } 
 }
 </script>
 
